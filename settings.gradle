@@ -1,0 +1,2 @@
+rootProject.name='MoveImageTouch'
+include ':app'
