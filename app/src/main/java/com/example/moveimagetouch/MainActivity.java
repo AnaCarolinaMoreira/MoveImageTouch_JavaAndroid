@@ -16,7 +16,8 @@ import android.widget.Toast;
 public class MainActivity extends Activity {
 
     private ViewGroup mainLayout;
-    private ImageView image;
+    private ImageView image1;
+    private ImageView image2;
 
     private int xDelta;
     private int yDelta;
@@ -27,9 +28,11 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         mainLayout = (RelativeLayout) findViewById(R.id.main);
-        image = (ImageView) findViewById(R.id.image);
+        image1 = (ImageView) findViewById(R.id.image1);
+        image2 = (ImageView) findViewById(R.id.image2);
 
-        image.setOnTouchListener(onTouchListener());
+        image1.setOnTouchListener(onTouchListener());
+        image2.setOnTouchListener(onTouchListener());
     }
 
     private View.OnTouchListener onTouchListener() {
@@ -52,12 +55,6 @@ public class MainActivity extends Activity {
                         yDelta = y - lParams.topMargin;
                         break;
 
-                    case MotionEvent.ACTION_UP:
-                        Toast.makeText(MainActivity.this,
-                                "Estou aqui!", Toast.LENGTH_SHORT)
-                                .show();
-                        break;
-
                     case MotionEvent.ACTION_MOVE:
                         RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) view
                                 .getLayoutParams();
@@ -67,8 +64,13 @@ public class MainActivity extends Activity {
                         layoutParams.bottomMargin = 0;
                         view.setLayoutParams(layoutParams);
                         break;
-                }
 
+                    case MotionEvent.ACTION_UP:
+                        Toast.makeText(MainActivity.this,
+                                "Estou aqui!", Toast.LENGTH_SHORT)
+                                .show();
+                        break;
+                }
                 mainLayout.invalidate();
                 return true;
             }
